@@ -1,0 +1,8 @@
+<params>
+    <param name="git_info_commit_branch" expression="${git.info.commit.branch}"/>
+    <param name="git_info_commit_count" expression="${git.info.commit.count}"/>
+    <param name="git_info_commit_hash" expression="${git.info.commit.hash}"/>
+    <param name="git_info_repo_name" expression="${git.info.repo.name}"/>
+    <param name="git_info_repo_path" expression="${git.info.repo.path}"/>
+    <param name="git_info_repo_url" expression="${git.info.repo.url}"/>
+</params>
