@@ -75,29 +75,7 @@
       <arg value="remote.origin.url"/>
     </exec>
 
-    <!-- commit count -->
-    <!--exec executable="git"
-          resultproperty="git.result"
-          failonerror="false"
-          dir="${dita.input.dirname}"
-          outputproperty="git.info.commit.count"
-          >
-      <arg value="rev-list"/>
-      <arg value="HEAD"/>
-      <arg value="count"/>
-    </exec-->
-
-    <!--exec executable="sh"
-          resultproperty="git.result"
-          failonerror="false"
-          dir="${dita.input.dirname}"
-          outputproperty="git.info.commit.count">
-      <arg value="-c"/>
-      <arg value="&quot;cd ${dita.input.dirname}; git shortlog | grep -E '^[ ]+\w+' | wc -l&quot;"/>
-    </exec-->
-
-
-   <exec executable="git"
+    <exec executable="git"
           resultproperty="git.result"
           failonerror="false"
           dir="${dita.input.dirname}"
