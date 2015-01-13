@@ -76,7 +76,7 @@
     </exec>
 
     <!-- commit count -->
-    <exec executable="git"
+    <!--exec executable="git"
           resultproperty="git.result"
           failonerror="false"
           dir="${dita.input.dirname}"
@@ -84,8 +84,41 @@
           >
       <arg value="rev-list"/>
       <arg value="HEAD"/>
-      <arg value="--count"/>
+      <arg value="count"/>
+    </exec-->
+
+    <!--exec executable="sh"
+          resultproperty="git.result"
+          failonerror="false"
+          dir="${dita.input.dirname}"
+          outputproperty="git.info.commit.count">
+      <arg value="-c"/>
+      <arg value="&quot;cd ${dita.input.dirname}; git shortlog | grep -E '^[ ]+\w+' | wc -l&quot;"/>
+    </exec-->
+
+
+   <exec executable="git"
+          resultproperty="git.result"
+          failonerror="false"
+          dir="${dita.input.dirname}"
+          output="${dita.temp.dir}/gitlog.txt"
+          >
+      <arg value="log"/>
+      <arg value="--pretty=format:&quot;%h&quot;"/>
     </exec>
+
+    <resourcecount property="git.info.commit.count">
+      <tokens>
+        <concat>
+          <filterchain>
+            <tokenfilter>
+              <linetokenizer/>
+            </tokenfilter>
+          </filterchain>
+          <fileset file="${dita.temp.dir}/gitlog.txt"/>
+        </concat>
+      </tokens>
+    </resourcecount>
 
      <!-- branch -->
     <exec executable="git"
